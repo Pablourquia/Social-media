@@ -38,4 +38,4 @@ export const startServer = (port: number) => {
 };
 
 const PORT = 3000;
-//startServer(PORT);
+startServer(PORT);
