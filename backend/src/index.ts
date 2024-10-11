@@ -4,11 +4,13 @@ import { usersRouter } from './routes/userRouter';
 import { messageRouter } from './routes/messageRouter';
 import { publicationRouter } from './routes/publicationRouter';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 export const app: Application = express();
 
 dotenv.config();
 
+app.use(cors({ origin: '*' }));
 app.use(express.json());
 app.use(usersRouter);
 app.use(messageRouter);

@@ -9,6 +9,7 @@ import { User } from '../models/user';
 export class AutheticateService {
 
   private apiUrl = 'http://localhost:3000';
+
   constructor(private http: HttpClient) { }
 
   registerUser(user: User): Observable<HttpResponse<User>> {
@@ -27,8 +28,8 @@ export class AutheticateService {
     ));
   }
 
-  loginUser(user: User): Observable<HttpResponse<User>> {
-    return this.http.post<User>(`${this.apiUrl}/users/login`, { email: user.email, password: user.password }, { observe: 'response' }).pipe(
+  loginUser(email: string, password: string): Observable<HttpResponse<User>> {
+    return this.http.post<User>(`${this.apiUrl}/users/login`, { email: email, password: password }, { observe: 'response' }).pipe(
       tap((res: HttpResponse<any>) => {
         if (res.status === 200) {
           localStorage.setItem('token', res.body!.token);
