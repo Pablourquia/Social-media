@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import express from 'express';
 export const usersRouter = express.Router();
 
+// Create a new user
 usersRouter.post('/users/create', async (req, res) => {
     try{
         const { name, email, password, photo } = req.body;
@@ -22,6 +23,7 @@ usersRouter.post('/users/create', async (req, res) => {
     }
 })
 
+// Login a user
 usersRouter.post('/users/login', async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -41,3 +43,17 @@ usersRouter.post('/users/login', async (req, res) => {
         res.status(500).json({message: 'Server error'});
     }
 })
+
+// Get by id
+usersRouter.get('/users/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const user = await User.findById(id);
+        if (!user) {
+            return res.status(404).json({message: 'User not found'});
+        }
+        return res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({message: 'Server error'});
+    }
+});

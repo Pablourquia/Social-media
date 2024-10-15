@@ -3,6 +3,7 @@ import { User } from '../models/User';
 import express from 'express';
 export const messageRouter = express.Router();
 
+// Create a new message
 messageRouter.post('/messages/create', async (req, res) => {
     try {
         const { sender, content, addressee } = req.body;
@@ -23,6 +24,7 @@ messageRouter.post('/messages/create', async (req, res) => {
     }
 })
 
+// Get all messages of a user
 messageRouter.get('/messages/:id', async (req, res) => {
     try {
         const { id } = req.params;

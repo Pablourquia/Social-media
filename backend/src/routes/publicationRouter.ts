@@ -4,6 +4,7 @@ import { User } from '../models/User';
 import express from 'express';
 export const publicationRouter = express.Router();
 
+// Create a new publication
 publicationRouter.post('/publications/create', async (req, res) => {
     try {
         const { author, title, description, comments } = req.body;
@@ -30,6 +31,7 @@ publicationRouter.post('/publications/create', async (req, res) => {
     }
 });
 
+// Get all publications
 publicationRouter.get('/publications', async (req, res) => {
     try {
         const publications = await Publication.find();
@@ -39,9 +41,25 @@ publicationRouter.get('/publications', async (req, res) => {
     }
 });
 
+// Get publication by id of a user
+publicationRouter.get('/publications', async (req, res) => {
+    try {
+        const { id } = req.body;
+        const user = await User.findById(id);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        const publications = await Publication.find({ author: id });
+        return res.status(200).json(publications);
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// Create a new comment
 publicationRouter.post('/publications/:id/comments/create', async (req, res) => {
     try {
-        const { author, content, createdAt } = req.body;
+        const { author, content } = req.body;
         const { id } = req.params;
 
         if (!author || !content) {
@@ -64,6 +82,7 @@ publicationRouter.post('/publications/:id/comments/create', async (req, res) => 
     }
 });
 
+// Create a new reply (comment to a comment)
 publicationRouter.post('/publications/:id/comments/:commentId/replies/create', async (req, res) => {
     try {
         const { author, content } = req.body;

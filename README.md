@@ -5,10 +5,10 @@
 ## Badges
  ![Badge en Desarollo](https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green)
 
-## Index
+## Indice
 
 - [Badges](#badges)
-- [Index](#index)
+- [Indice](#indice)
 - [Descripcion](#descripcion)
 - [Despliegue](#despliegue)
 - [Características](#características)
@@ -25,7 +25,7 @@ Este proyecto no está desplegado por ahora.
 
 ## Características
 
-- 
+- Se pueden crear usuario y loguearse.
 
 - 
 
