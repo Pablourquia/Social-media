@@ -2,11 +2,12 @@ import { Routes } from '@angular/router';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'register',
+        redirectTo: 'login',
         pathMatch: 'full'
     },
     {
@@ -19,6 +20,7 @@ export const routes: Routes = [
     },
     {
         path: 'user-details',
-        component: UserDetailsComponent
+        component: UserDetailsComponent,
+        canActivate: [AuthGuard]
     }
 ];

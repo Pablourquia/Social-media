@@ -1,4 +1,4 @@
-import {Schema, Document, model, Types} from 'mongoose';
+import {Schema, Document, model} from 'mongoose';
 import {IUser} from './User';
 
 interface IFollower extends Document {

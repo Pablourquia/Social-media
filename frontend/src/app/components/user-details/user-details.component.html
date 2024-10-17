@@ -1,1 +1,17 @@
-<p>user-details works!</p>
+<div class="app-container">
+    <app-header></app-header>
+    <main>
+      <div class="container">
+        <h2>Detalles de usuario:</h2>
+        <div class="row">
+          <h3>Nombre de usuario:</h3>
+          <input type="text" [value]="name" disabled>
+        </div>
+        <div class="row">
+          <h3>Correo electrónico:</h3>
+          <input type="text" [value]="email" disabled>
+        </div>
+      </div>
+    </main>
+    <app-footer></app-footer>
+</div>  
