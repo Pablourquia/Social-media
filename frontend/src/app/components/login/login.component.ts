@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AutheticateService } from '../../core/autheticate.service';
+import { AutheticateService } from '@core/autheticate.service';
 import { Router } from '@angular/router';
 import { CommonModule} from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -24,7 +24,7 @@ export class LoginComponent {
   login(): void {
     this.authService.loginUser(this.email, this.password ).subscribe(
       () => {
-        this.router.navigate(['/user-details']);
+        this.router.navigate(['/feed']);
       },
       error => {
         console.log(error);

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router} from '@angular/router';
-import { AutheticateService } from '../../../core/autheticate.service';
+import { AutheticateService } from '@core/autheticate.service';
 
 @Component({
   selector: 'app-header',
@@ -23,5 +23,8 @@ export class HeaderComponent {
     this.router.navigate(['/login']);
   }
   
+  user_details(): void {
+    this.router.navigate(['/user-details']);
+  }
 
 }
